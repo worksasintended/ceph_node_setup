@@ -1,0 +1,3 @@
+#/bin/bash
+output=$(vgscan | awk -F ' ' '{print $4}' | sed 's/\"//g' | grep ceph | sed ':a;N;$!ba;s/\n/ /g')
+yes | vgremove $output
